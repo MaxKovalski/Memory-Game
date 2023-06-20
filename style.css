@@ -5,13 +5,98 @@ html {
 }
 
 body {
-  direction: rtl;
   padding-bottom: 200px;
-  background: #333;
-}
 
+  z-index: 2;
+  background-image: url(./download.jfif);
+}
+h4,
+p,
+span {
+  color: black !important;
+}
 * {
   font-family: "Rubik", sans-serif !important;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+#popUp {
+  background-image: url(./download.jfif);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+.start-game {
+  display: flex;
+  flex-direction: column;
+  height: 30vh;
+  border: 5px solid;
+  animation: color-change 3s infinite;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-top: 50px;
+  border-radius: 20px;
+}
+h1 {
+  animation: color-change 3s infinite;
+}
+@keyframes color-change {
+  0% {
+    border-color: red;
+  }
+  25% {
+    border-color: blue;
+  }
+  50% {
+    border-color: green;
+  }
+  75% {
+    border-color: rgb(246, 5, 246);
+  }
+  100% {
+    border-color: red;
+  }
+}
+
+.start-game h4 {
+  margin-left: 35px;
+  margin-right: 20px;
+}
+.start-game input {
+  margin-left: 50px;
+  margin-right: 50px;
+  border: none;
+  border-radius: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+  text-align: center;
+}
+input::placeholder {
+  text-align: center;
+  color: black;
+  font-size: 15px;
+}
+#playerContainer {
+  display: flex;
+  color: white;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+#playerContainer h4 {
+  margin-left: 20px;
+}
+#playerContainer span {
+  margin-left: 10px;
 }
 
 h1 {
@@ -46,7 +131,6 @@ button:hover {
 #board {
   display: inline-grid;
   overflow: hidden;
-  background-color: #e4e4e4;
   gap: 6px;
   padding: 6px;
   border-radius: 12px;
@@ -123,4 +207,16 @@ p .margin {
 }
 .cheat {
   filter: brightness(0.7);
+}
+#resetGame {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  display: none;
+}
+#resetGame button {
+  width: 30%;
+  padding-top: 50px;
+  padding-bottom: 50px;
 }

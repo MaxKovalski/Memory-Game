@@ -2,24 +2,80 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>משחק הזיכרון</title>
+    <title>Memory-Game</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <script src="javascript.js" defer></script>
   </head>
-
   <body>
-    <h1>משחק הזיכרון</h1>
-
+  <div class=""><h1>Memory-Game</h1></div>  
     <p>
-      מספר ניסיונות: <b class="counter">0</b>
-      <span class="margin"></span> טיימר: <b class="timer">00:00</b>
+      Attempts: <b class="counter">0</b> <span class="margin"></span> Timer:
+      <b class="timer">00:00</b>
     </p>
-
+    <div id="playerContainer">
+      <h4 id="player1">Test </h4>
+      <span>Score:</span>
+      <span id="point1">0</span>
+      
+      <h4 id="player2">Test </span></h4>
+      <span>Score:</span>
+      <span id="point2">0</span>
+    </div>
+    <div id="resetGame"> <button  onClick="window.location.reload()">RESET GAME</button></div>
+    <div style="text-align: center; color: white">
+      <h4>turn: <span id="theTurn"></span></h4>
+    </div>
     <div class="frame">
       <div id="board"></div>
     </div>
+    <div id="popUp">
+      <div class="start-game">
+        <h4>Welcome to Memory-Game</h4>
+        <label for="player1Input"></label>
+        <input
+          maxlength="10"
+          required
+          id="player1Input"
+          type="text"
+          placeholder="Player1 Name"
+        />
+        <br />
+        <label for="player2Input"></label>
+        <input
+          maxlength="10"
+          required
+          id="player2Input"
+          type="text"
+          placeholder="Player2 Name"
+        />
+        <br />
+        <label for="rows"></label>
+        <input
+          maxlength="10"
+          required
+          id="rows"
+          type="number"
+          placeholder="Enter Rows"
+        />
+        <br />
+        <label for="startNumber"></label>
+        <input type="number" id="startNumber" placeholder="Start Number?" />
+        <br />
+        <label for="blocks"></label>
+        <input
+          required
+          id="blocks"
+          type="number"
+          placeholder="How Much Blocks?"
+        />
+        <br />
+        <button onclick="startGame()" type="button">Start!</button>
+      </div>
+    </div>
+  
+   
   </body>
 </html>
