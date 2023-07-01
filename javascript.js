@@ -48,15 +48,14 @@ function startGame() {
     alert("for best Experience in 'Columns' use max: 4");
   } else {
     popUp.style.display = "none";
+    gameTimer();
+    createBoard();
+    addNumbers();
   }
   player1.innerText = player1Input.value;
   player2.innerText = player2Input.value;
   amount = amountNumber.value;
   theTurn.innerHTML = player1Input.value;
-
-  gameTimer();
-  createBoard();
-  addNumbers();
 }
 function createBoard() {
   let row = columns.value;
