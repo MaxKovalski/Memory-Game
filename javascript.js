@@ -23,6 +23,8 @@ let turn = true;
 let pointsPlayer1 = 0;
 let pointsPlayer2 = 0;
 let time;
+let mw = window.matchMedia("(max-width: 800px");
+
 let alerts =
   "Name is required\nMaximum columns: 10 \nStart Number Cannot Be Empty \nMaximum Number: 900 \nMaximum Pairs: 10 ";
 function startGame() {
@@ -41,6 +43,9 @@ function startGame() {
   } else if (!player1Input.value || !player2Input.value) {
     alert(alerts);
     return;
+  }
+  if (mw.matches && columns.value > 4) {
+    alert("for best Experience in 'Columns' use max: 4");
   } else {
     popUp.style.display = "none";
   }
@@ -187,10 +192,3 @@ function winWin() {
     }
   }
 }
-function responsive() {
-  let mw = window.matchMedia("(max-width: 800px");
-  if (mw.matches) {
-    alert("for best Experience in 'Columns' use max: 5");
-  }
-}
-responsive();
