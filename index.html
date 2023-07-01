@@ -10,30 +10,33 @@
     <script src="javascript.js" defer></script>
   </head>
   <body>
-  <div class=""><h1>Memory-Game</h1></div>  
-    <p>
+    <!-- Game -->
+    <div id="memoryGame">
+  <div ><h1 class="h4-memory">Memory-Game</h1></div>  
+    <p class="att-tmr">
       Attempts: <b class="counter">0</b> <span class="margin"></span> Timer:
       <b class="timer">00:00</b>
     </p>
     <div id="playerContainer">
-      <h4 id="player1">Test </h4>
-      <span>Score:</span>
-      <span id="point1">0</span>
+      <h4 id="player1"> </h4>
+      <span id="player1Score">Score:</span>
+      <span  id="point1">0</span>
       
-      <h4 id="player2">Test </span></h4>
-      <span>Score:</span>
+      <h4 id="player2"></span></h4>
+      <span id="player2Score" >Score:</span>
       <span id="point2">0</span>
     </div>
-    <div id="resetGame"> <button  onClick="window.location.reload()">RESET GAME</button></div>
     <div style="text-align: center; color: white">
-      <h4>turn: <span id="theTurn"></span></h4>
+      <h4>turn:&nbsp &nbsp<span id="theTurn"></span></h4>
     </div>
     <div class="frame">
       <div id="board"></div>
     </div>
+  </div>
+    <!-- Start-PopUp -->
     <div id="popUp">
       <div class="start-game">
-        <h4>Welcome to Memory-Game</h4>
+        <h4 class="h4-memory">Memory-Game</h4>
         <label for="player1Input"></label>
         <input
           maxlength="10"
@@ -56,26 +59,31 @@
         <input
           maxlength="10"
           required
-          id="rows"
+          id="columns"
           type="number"
-          placeholder="Enter Rows"
+          placeholder="Enter Columns"
         />
         <br />
         <label for="startNumber"></label>
-        <input type="number" id="startNumber" placeholder="Start Number?" />
+        <input type="number" id="startNumber" placeholder="Starting Number?" />
         <br />
         <label for="blocks"></label>
         <input
           required
           id="blocks"
           type="number"
-          placeholder="How Much Blocks?"
+          placeholder="How Many Pairs?"
         />
         <br />
-        <button onclick="startGame()" type="button">Start!</button>
+        <button class="strat-btn" onclick="startGame()" type="button">Start!</button>
       </div>
     </div>
-  
-   
+  <!-- Winner-Popup -->
+   <div id="win" class="win-container">
+    <h4>Name:&nbsp<span id="winName"></span></h4>
+    <h4>Score:&nbsp<span id="winScore"></span></h4>
+    <h4>Time:&nbsp<span id="winTime"></span></h4>
+    <button onclick="location.reload()">Reset</button>
+   </div>
   </body>
 </html>

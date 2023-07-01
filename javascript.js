@@ -1,8 +1,8 @@
+let theTurn = document.getElementById("theTurn");
 const point1 = document.getElementById("point1");
 const point2 = document.getElementById("point2");
-let theTurn = document.getElementById("theTurn");
 const board = document.querySelector("#board");
-const rows = document.getElementById("rows");
+const columns = document.getElementById("columns");
 const amountNumber = document.getElementById("blocks");
 const startNumberInput = document.getElementById("startNumber");
 const popUp = document.getElementById("popUp");
@@ -10,7 +10,11 @@ const player1 = document.getElementById("player1");
 const player2 = document.getElementById("player2");
 const player1Input = document.getElementById("player1Input");
 const player2Input = document.getElementById("player2Input");
+const startNumber = document.getElementById("startNumber");
 const resetGame = document.getElementById("resetGame");
+const winName = document.getElementById("winName");
+const winScore = document.getElementById("winScore");
+winTime = document.getElementById("winTime");
 let amount = 0;
 const numbers = [];
 let timer = 0;
@@ -18,18 +22,25 @@ let counter = 0;
 let turn = true;
 let pointsPlayer1 = 0;
 let pointsPlayer2 = 0;
+let time;
+let alerts =
+  "Name is required\nMaximum columns: 10 \nStart Number Cannot Be Empty \nMaximum Number: 900 \nMaximum Pairs: 10 ";
 function startGame() {
-  if (rows.value > 10 || amountNumber.value > 10) {
-    alert("Maximum Rows: 10 \nMaximum Blocks: 10");
+  if (columns.value > 10 || amountNumber.value > 10) {
+    alert(alerts);
     return;
   } else if (
-    rows.value <= 1 ||
+    columns.value <= 1 ||
     amountNumber.value <= 1 ||
     startNumberInput.value == ""
   ) {
-    alert(
-      "Maximum Rows: 10 \nStart Number Cannot Be Empty \nMaximum Blocks: 10"
-    );
+    alert(alerts);
+  } else if (startNumber.value > 900) {
+    alert(alerts);
+    return;
+  } else if (!player1Input.value || !player2Input.value) {
+    alert(alerts);
+    return;
   } else {
     popUp.style.display = "none";
   }
@@ -43,7 +54,7 @@ function startGame() {
   addNumbers();
 }
 function createBoard() {
-  let row = rows.value;
+  let row = columns.value;
   board.style.gridTemplateColumns = `repeat(${row},1fr)`;
   numbers.length = 0;
   const startNumber = parseInt(startNumberInput.value) || 1;
@@ -116,8 +127,40 @@ function checkCards() {
   }
   checkTurn();
 }
+function gameTimer() {
+  setInterval(() => {
+    timer++;
+    date = new Date(timer * 1000);
+    const m = date.getMinutes();
+    const s = date.getSeconds();
+    time = `${m < 10 ? "0" + m : m}:${s < 10 ? "0" + s : s}`;
+    document.querySelector(".timer").innerHTML = time;
+  }, 1000);
+}
+function checkTurn() {
+  let player1Name = player1Input.value;
+  let player2Name = player2Input.value;
+  let player1Color = document.createElement("span");
+  player1Color.style.color = "#711171";
+  player1Color.textContent = player1Name;
+  let player2Color = document.createElement("span");
+  player2Color.style.color = "greenyellow";
+  player2Color.textContent = player2Name;
+  if (turn) {
+    theTurn.innerHTML = "";
+    theTurn.appendChild(player1Color);
+    theTurn.innerHTML.replace(player2Name, "");
+    point1.innerHTML = pointsPlayer1;
+  } else {
+    theTurn.innerHTML = "";
+    theTurn.appendChild(player2Color);
+    theTurn.innerHTML.replace(player1Name, "");
+    point2.innerHTML = pointsPlayer2;
+  }
+}
 function winWin() {
   const cards = board.querySelectorAll("div:not(.hidden)");
+  const win = document.getElementById("win");
   if (!cards.length) {
     confetti({
       particleCount: 100,
@@ -126,34 +169,28 @@ function winWin() {
       origin: { y: 0.6 },
     });
     if (pointsPlayer1 > pointsPlayer2) {
-      alert(player1Input.value + " Winner");
+      winName.innerHTML = player1Input.value;
+      winScore.innerHTML = pointsPlayer1;
+      winTime.innerHTML = time;
+      win.classList.add("player1-win");
+      win.style.display = "flex";
+      win.style.borderColor = "#711171";
+      document.getElementById("memoryGame").style.display = "none";
     } else if (pointsPlayer1 < pointsPlayer2) {
-      alert(player2Input.value + " Winner");
+      winName.innerHTML = player2Input.value;
+      winScore.innerHTML = pointsPlayer2;
+      winTime.innerHTML = time;
+      win.style.display = "flex";
+      win.classList.add("player2-win");
+      win.style.borderColor = "greenyellow";
+      document.getElementById("memoryGame").style.display = "none";
     }
-    resetGame.style.display = "flex";
   }
 }
-function gameTimer() {
-  setInterval(() => {
-    timer++;
-    const date = new Date(timer * 1000);
-    const m = date.getMinutes();
-    const s = date.getSeconds();
-    document.querySelector(".timer").innerHTML = `${m < 10 ? "0" + m : m}:${
-      s < 10 ? "0" + s : s
-    }`;
-  }, 1000);
-}
-function checkTurn() {
-  let player1Name = player1Input.value;
-  let player2Name = player2Input.value;
-  if (turn) {
-    theTurn.innerHTML = player1Name;
-    theTurn.innerHTML.replace(player2Name, "");
-    point1.innerHTML = pointsPlayer1;
-  } else {
-    theTurn.innerHTML = player2Name;
-    theTurn.innerHTML.replace(player1Name, "");
-    point2.innerHTML = pointsPlayer2;
+function responsive() {
+  let mw = window.matchMedia("(max-width: 800px");
+  if (mw.matches) {
+    alert("for best Experience in 'Columns' use max: 5");
   }
 }
+responsive();
