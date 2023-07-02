@@ -10,32 +10,8 @@
     <script src="javascript.js" defer></script>
   </head>
   <body>
-    <!-- Game -->
-    <div id="memoryGame">
-  <div ><h1 class="h4-memory">Memory-Game</h1></div>  
-    <p class="att-tmr">
-      Attempts: <b class="counter">0</b> <span class="margin"></span> Timer:
-      <b class="timer">00:00</b>
-    </p>
-    <div id="playerContainer">
-    <h4 id="player1"> </h4>
-        <span id="player1Score">Score:</span>
-        <span  id="point1">0</span>
-  
-    <h4 id="player2"></span></h4>
-        <span id="player2Score" >Score:</span>
-        <span id="point2">0</span>
-
-    </div>
-    <div style="text-align: center; color: white">
-      <h4>turn:&nbsp &nbsp<span id="theTurn"></span></h4>
-    </div>
-    <div class="frame">
-      <div id="board"></div>
-    </div>
-  </div>
-    <!-- Start-PopUp -->
-    <div id="popUp">
+     <!-- Start-PopUp -->
+     <div id="popUp">
       <div class="start-game">
         <h4 class="h4-memory">Memory-Game</h4>
         <label for="player1Input"></label>
@@ -79,12 +55,39 @@
         <button class="strat-btn" onclick="startGame()" type="button">Start!</button>
       </div>
     </div>
+    <!-- Game -->
+    <div id="memoryGame">
+  <div ><h1 class="h4-memory">Memory-Game</h1></div>  
+    <p class="att-tmr">
+      Attempts: <b class="counter">0</b> <span class="margin"></span> Timer:
+      <b class="timer">00:00</b>
+    </p>
+    <div id="playerContainer">
+    <h4 id="player1"> </h4>
+        <span id="player1Score">Score:</span>
+        <span  id="point1">0</span>
+  
+    <h4 id="player2"></span></h4>
+        <span id="player2Score" >Score:</span>
+        <span id="point2">0</span>
+
+    </div>
+    <div style="text-align: center; color: white">
+      <h4>turn:&nbsp &nbsp<span id="theTurn"></span></h4>
+    </div>
+    <div class="frame">
+      <div id="board"></div>
+    </div>
+  </div>
+   
   <!-- Winner-Popup -->
    <div id="win" class="win-container">
+    <div class="win-popup">
     <h4>Name:&nbsp<span id="winName"></span></h4>
     <h4>Score:&nbsp<span id="winScore"></span></h4>
     <h4>Time:&nbsp<span id="winTime"></span></h4>
     <button onclick="location.reload()">Reset</button>
+  </div>
    </div>
   </body>
 </html>

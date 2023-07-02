@@ -37,6 +37,7 @@ function startGame() {
     startNumberInput.value == ""
   ) {
     alert(alerts);
+    return;
   } else if (startNumber.value > 900) {
     alert(alerts);
     return;
@@ -44,18 +45,19 @@ function startGame() {
     alert(alerts);
     return;
   }
-  if (mw.matches && columns.value > 4) {
-    alert("for best Experience in 'Columns' use max: 4");
+  if (mw.matches && columns.value > 5) {
+    alert("for best Experience in 'Columns' use max: 5");
+    return;
   } else {
     popUp.style.display = "none";
     gameTimer();
-    createBoard();
-    addNumbers();
   }
   player1.innerText = player1Input.value;
   player2.innerText = player2Input.value;
   amount = amountNumber.value;
   theTurn.innerHTML = player1Input.value;
+  createBoard();
+  addNumbers();
 }
 function createBoard() {
   let row = columns.value;
