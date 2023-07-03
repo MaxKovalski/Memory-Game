@@ -21,6 +21,7 @@
           id="player1Input"
           type="text"
           placeholder="Player1 Name"
+          title="Enter Player1 Name"
         />
         <br />
         <label for="player2Input"></label>
@@ -30,9 +31,10 @@
           id="player2Input"
           type="text"
           placeholder="Player2 Name"
+          title="Enter Player2 Name"
         />
         <br />
-        <label for="rows"></label>
+        <label for="columns"></label>
         <input
           maxlength="10"
           required
@@ -40,10 +42,16 @@
           type="number"
           pattern="[0-9]*"
           placeholder="Enter Columns"
+          title="Enter Number of Columns"
         />
         <br />
         <label for="startNumber"></label>
-        <input type="number" pattern="[0-9]*" id="startNumber" placeholder="Starting Number?" />
+        <input 
+        type="number"
+         pattern="[0-9]*" 
+         id="startNumber"  
+         placeholder="Starting Number?" 
+         title="Enter Start Number" />
         <br />
         <label for="blocks"></label>
         <input
@@ -52,6 +60,7 @@
           type="number"
           pattern="[0-9]*"
           placeholder="How Many Pairs?"
+          title="Enter Number of Pairs"
         />
         <br />
         <button class="strat-btn" onclick="startGame()" type="button">Start!</button>
@@ -85,7 +94,7 @@
   <!-- Winner-Popup -->
    <div id="win" class="win-container">
     <div class="win-popup">
-    <h4>Name:&nbsp<span id="winName"></span></h4>
+    <h4>The Winner Name IS:&nbsp<span id="winName"></span></h4>
     <h4>Score:&nbsp<span id="winScore"></span></h4>
     <h4>Time:&nbsp<span id="winTime"></span></h4>
     <button onclick="location.reload()">Reset</button>

@@ -24,12 +24,14 @@ let pointsPlayer1 = 0;
 let pointsPlayer2 = 0;
 let time;
 let mw = window.matchMedia("(max-width: 800px");
-
+let test = "";
 let alerts =
-  "Name is required\nMaximum columns: 10 \nStart Number Cannot Be Empty \nMaximum Number: 900 \nMaximum Pairs: 10 ";
+  "PlayerName1&2 required\nMaximum columns: 10 \nStart Number Cannot Be Empty \nMaximum Number: 900 \nMaximum Pairs: 10 ";
 function startGame() {
+  responsiveAlert();
   if (columns.value > 10 || amountNumber.value > 10) {
     alert(alerts);
+
     return;
   } else if (
     columns.value <= 1 ||
@@ -193,3 +195,10 @@ function winWin() {
     }
   }
 }
+function responsiveAlert() {
+  if (mw.matches) {
+    alerts =
+      "PlayerName1&2 required\nMaximum columns: 10 \nStart Number Cannot Be Empty \nMaximum Number: 900 \nMaximum Pairs: 10 ";
+  }
+}
+let;
